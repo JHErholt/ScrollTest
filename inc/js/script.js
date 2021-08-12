@@ -77,13 +77,13 @@ setTimeout(function () {
     createContact.appendChild(createContactAnchor)
 
     setTimeout(function () {
-        console.log(createContact.offsetHeight + 'px' + ' ' + createContact.id)
-        console.log(createAbout.offsetHeight + 'px' + ' ' + createAbout.id)
-        console.log(createNews.offsetHeight + 'px' + ' ' + createNews.id)
         console.log(createHome.offsetHeight + 'px' + ' ' + createHome.id)
-    }, 50)
+        console.log(createNews.offsetHeight + 'px' + ' ' + createNews.id)
+        console.log(createAbout.offsetHeight + 'px' + ' ' + createAbout.id)
+        console.log(createContact.offsetHeight + 'px' + ' ' + createContact.id)
+    }, 110)
 
-}, 100)
+}, 10)
 
 
 // Creating site
@@ -238,6 +238,7 @@ siteContentJsonFetch
                                         newsBack.innerHTML = 'Back'
                                         newsBack.className = 'newsLink'
                                         newsBack.href = '#news'
+                                        console.log('newsBack')
                                         newsBack.addEventListener('click', () => {
                                             let getHomeWrapper = document.getElementById('homeWrapper')
                                             let getAboutWrapper = document.getElementById('aboutWrapper')
@@ -274,7 +275,7 @@ siteContentJsonFetch
                             } else {
                                 getNewsWrapper.appendChild(newsItem)
                             }
-                        }, 101)
+                        }, 10)
                         
                     }
                 })
@@ -295,7 +296,7 @@ siteContentJsonFetch
 
                 const getContact = document.getElementById('contactWrapper')
                 const getContactHeight = getContact.offsetHeight
-
+                console.log('getHeight' + getNewsHeight + '   ' + getHomeHeight)
                 let getNavbar = document.getElementsByTagName('li')
                 window.onscroll = function () {
                     // Home
@@ -359,7 +360,7 @@ siteContentJsonFetch
                     }
                 }
 
-            }, 150)
+            }, 200)
 
         }
     })
