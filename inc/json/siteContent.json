@@ -14,7 +14,7 @@
             "header": {
                 "logo": {
                     "src1": "/assets/logo_black.svg",
-                    "src2": "/assets/logo_white.svg"  
+                    "src2": "/assets/logo_white.svg"
                 },
                 "nav": [
                     {
@@ -42,21 +42,14 @@
             },
             "main": [
                 {
-                "home":{
-
-                },
-                "about":{
-
-                },
-                "contact": [
-                    {
-                        "title": "",
-                        "fontAwesomeIcon": "",
-                        "text": "",
-                        "url": "",
-                        "urlText": ""
+                    "home": {},
+                    "about": {},
+                    "contact": {
+                        "address": "",
+                        "city": "",
+                        "phone": "",
+                        "mail": ""
                     }
-                ]
                 }
             ]
         }

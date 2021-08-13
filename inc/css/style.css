@@ -155,11 +155,16 @@ header{
 .aboutWrapper{
     background-color: rgb(0, 0, 0);
 }
-/* .contactWrapper{
-    background-color: rgb(43, 43, 43);
-} */
-/* Footer */
 
+
+.contactContainer {
+    display: flex;
+    width: 80vw;
+    margin: 5em auto 5em auto;
+}
+.mapContainer {
+    margin: 15em auto 15em auto;
+}
 
 
 

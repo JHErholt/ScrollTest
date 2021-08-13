@@ -134,18 +134,52 @@ siteContentJsonFetch
                 logoContainer.appendChild(logoLink)
             }
 
+            setTimeout(function() {
 
-            // Making the home container
-            let getHomeWrapper = document.getElementById('homeWrapper')
+                // Making the home container
+                let getHomeWrapper = document.getElementById('homeWrapper')
+                
+                let homeTitle = document.createElement('h1')
+                homeTitle.innerHTML = 'test'
+                homeTitle.className = 'title'
+                
+                getHomeWrapper.appendChild(homeTitle)
+                
+                
+                // Making the contact container
+                let getContactWrapper = document.getElementById('contactWrapper')
+                
+                let contactContainer = document.createElement('div')
+                contactContainer.className = 'contactContainer'
+                contactContainer.id = 'contactContainer'
+                
+                let textContainer = document.createElement('div')
+                textContainer.className = 'textContainer'
+                textContainer.id = 'textContainer'
+                
+                let mapContainer = document.createElement('div')
+                mapContainer.className = 'mapContainer'
+                mapContainer.id = 'mapContainer'
 
-            let homeTitle = document.createElement('h1')
-            homeTitle.innerHTML = 'test'
-            homeTitle.className = 'title'
+                let googleMaps = document.createElement('iframe')
+                googleMaps.className = 'googleMaps'
+                googleMaps.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6165.0559945148025!2d12.024355710177632!3d55.8502151566515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46526faa74650263%3A0xa874c9690e85d53!2sTarzan%20Skr%C3%A6nten!5e1!3m2!1sen!2sdk!4v1628838013568!5m2!1sen!2sdk'
+                googleMaps.width = '600'
+                googleMaps.height = '450'
+                googleMaps.style = 'border:0;'
+                googleMaps.allowFullscreen = ''
+                googleMaps.loading = 'lazy'
+                
+                mapContainer.appendChild(googleMaps)
 
-            getHomeWrapper.appendChild(homeTitle)
-
-            // Making the news container
-            newsJsonFetch
+                contactContainer.appendChild(textContainer)
+                contactContainer.appendChild(mapContainer)
+                getContactWrapper.appendChild(contactContainer)
+                
+                
+            }, 11)
+                // Making the news container
+                newsJsonFetch
                 .then(res => res.json())
                 .then(data => {
                     for (let i = 0; i < data['news'].length; i++) {
