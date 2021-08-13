@@ -14,28 +14,27 @@
             "header": {
                 "logo": {
                     "src1": "/assets/logo_black.svg",
-                    "src2": "/assets/logo_white.svg"
-                    
+                    "src2": "/assets/logo_white.svg"  
                 },
                 "nav": [
                     {
                         "navItem": {
                             "url": "#news",
-                            "id": "newsNav",
+                            "id": "news",
                             "innerHTML": "News"
                         }
                     },
                     {
                         "navItem": {
                             "url": "#about",
-                            "id": "aboutNav",
+                            "id": "about",
                             "innerHTML": "About"
                         }
                     },
                     {
                         "navItem": {
                             "url": "#contact",
-                            "id": "contactNav",
+                            "id": "contact",
                             "innerHTML": "Contact"
                         }
                     }

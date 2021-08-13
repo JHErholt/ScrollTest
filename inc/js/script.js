@@ -41,7 +41,7 @@ setTimeout(function () {
 
     // Creating news
     var createNews = document.createElement('div')
-    createNews.style.minHeight = fullHeight + 'px'
+    createNews.style.minHeight = fullHeight + 1 + 'px'
     createNews.className = 'newsWrapper'
     createNews.id = 'newsWrapper'
     mainContainer.appendChild(createNews)
@@ -53,7 +53,7 @@ setTimeout(function () {
 
     // Creating about
     var createAbout = document.createElement('div')
-    createAbout.style.minHeight = fullHeight + 'px'
+    createAbout.style.minHeight = fullHeight + 1 + 'px'
     createAbout.className = 'aboutWrapper'
     createAbout.id = 'aboutWrapper'
     mainContainer.appendChild(createAbout)
@@ -65,7 +65,7 @@ setTimeout(function () {
 
     // Creating contact
     var createContact = document.createElement('div')
-    createContact.style.minHeight = fullHeight + 'px'
+    createContact.style.minHeight = fullHeight + 1 + 'px'
     createContact.className = 'contactWrapper'
     createContact.id = 'contactWrapper'
     mainContainer.appendChild(createContact)
@@ -104,9 +104,10 @@ siteContentJsonFetch
 
                 var listItem = document.createElement('li');
                 listItem.className = 'hoverable'
+                listItem.id = data['siteContent'][0]['header']['nav'][i]['navItem']['id'] + 'Li'
                 let navItem = document.createElement('a');
                 navItem.innerHTML = data['siteContent'][0]['header']['nav'][i]['navItem']['innerHTML'];
-                navItem.id = data['siteContent'][0]['header']['nav'][i]['navItem']['id']
+                navItem.id = data['siteContent'][0]['header']['nav'][i]['navItem']['id'] + 'Nav'
                 navItem.href = data['siteContent'][0]['header']['nav'][i]['navItem']['url'];
                 listItem.appendChild(navItem)
                 navWrapper.appendChild(listItem)
@@ -132,6 +133,16 @@ siteContentJsonFetch
                 logoLink.appendChild(logo)
                 logoContainer.appendChild(logoLink)
             }
+
+
+            // Making the home container
+            let getHomeWrapper = document.getElementById('homeWrapper')
+
+            let homeTitle = document.createElement('h1')
+            homeTitle.innerHTML = 'test'
+            homeTitle.className = 'title'
+
+            getHomeWrapper.appendChild(homeTitle)
 
             // Making the news container
             newsJsonFetch
@@ -191,7 +202,6 @@ siteContentJsonFetch
                             }
                             if (i == 2) {
                                 setTimeout(function () {
-                                    // prepare
                                     news.className = 'enough'
 
                                     var newsAllContainer = document.createElement('div')
@@ -209,7 +219,8 @@ siteContentJsonFetch
                                         getHomeWrapper.classList.add('hidden');
                                         getAboutWrapper.classList.add('hidden');
                                         getContactWrapper.classList.add('hidden');
-
+                                        
+                                        
                                         let getNewsNav = document.getElementById('newsNav')
                                         getNewsNav.href = '#new'
 
@@ -242,6 +253,9 @@ siteContentJsonFetch
                                             getHomeWrapper.classList.remove('hidden');
                                             getAboutWrapper.classList.remove('hidden');
                                             getContactWrapper.classList.remove('hidden');
+
+                                            let getNewsNav = document.getElementById('newsNav')
+                                            getNewsNav.href = '#news'
 
                                             for (let i = 0; i < getNewsAllItems.length; i++) {
                                                 setTimeout(function () {
@@ -297,16 +311,26 @@ siteContentJsonFetch
                 console.log(getAboutHeight + 'About')
                 console.log(getContactHeight + 'Contact')
                 console.log('getHeight')
-                let getNavbar = document.getElementsByTagName('li')
-                window.onscroll = function () {
-                    if (news.classList.contains('allOpen')) {
+                
+                let getNewsNav = document.getElementById('newsLi')
+                let getAboutNav = document.getElementById('aboutLi')
+                let getContactNav = document.getElementById('contactLi')
 
+                window.onscroll = function () {
+                    let getNavbar = document.getElementsByTagName('li')
+                    if (news.classList.contains('allOpen')) {
+                    
                     } else {
                         // Home
                         if (window.pageYOffset > 0 && window.pageYOffset < getHomeHeight) {
                             title.innerHTML = data['siteContent'][0]['prepare']['title'] + ' | Home';
                             document.documentElement.style.setProperty('--primary-text-color', '#000000');
                             document.documentElement.style.setProperty('--primary-background-color', '255, 255, 255');
+                            
+                            getNewsNav.classList.remove('active')
+                            getAboutNav.classList.remove('active')
+                            getContactNav.classList.remove('active')
+
 
                             if (data['siteContent'][0]['header']['logo']['src1'] == '' || undefined) {
                                 titleLink.classList.add('hoverable')
@@ -324,6 +348,11 @@ siteContentJsonFetch
                             title.innerHTML = data['siteContent'][0]['prepare']['title'] + ' | News';
                             document.documentElement.style.setProperty('--primary-text-color', '#000000');
                             document.documentElement.style.setProperty('--primary-background-color', '255, 255, 255');
+                            
+                            getNewsNav.classList.add('active')
+                            getAboutNav.classList.remove('active')
+                            getContactNav.classList.remove('active')
+
                             if (data['siteContent'][0]['header']['logo']['src1'] == '' || undefined) {
                                 titleLink.classList.add('hoverable')
                                 titleLink.innerHTML = data['siteContent'][0]['prepare']['title'] + ' | News';
@@ -341,6 +370,11 @@ siteContentJsonFetch
                             title.innerHTML = data['siteContent'][0]['prepare']['title'] + ' | About';
                             document.documentElement.style.setProperty('--primary-text-color', '#ffffff');
                             document.documentElement.style.setProperty('--primary-background-color', '0, 0, 0');
+                            
+                            getNewsNav.classList.remove('active')
+                            getAboutNav.classList.add('active')
+                            getContactNav.classList.remove('active')
+                            
                             if (data['siteContent'][0]['header']['logo']['src2'] == '' || undefined) {
                                 titleLink.classList.add('hoverable')
                                 titleLink.innerHTML = data['siteContent'][0]['prepare']['title'] + ' | About';
@@ -352,13 +386,18 @@ siteContentJsonFetch
                         // Contact
                         if (pageYOffset > getHomeHeight + getNewsHeight + getAboutHeight && window.pageYOffset < getHomeHeight + getNewsHeight + getAboutHeight + getContactHeight) {
                             title.innerHTML = data['siteContent'][0]['prepare']['title'] + ' | Contact';
-                            document.documentElement.style.setProperty('--primary-text-color', '#ffffff');
-                            document.documentElement.style.setProperty('--primary-background-color', '43, 43, 43');
+                            document.documentElement.style.setProperty('--primary-text-color', '#000000');
+                            document.documentElement.style.setProperty('--primary-background-color', '255, 255, 255');
+                            
+                            getNewsNav.classList.remove('active')
+                            getAboutNav.classList.remove('active')
+                            getContactNav.classList.add('active')
+
                             if (data['siteContent'][0]['header']['logo']['src1'] == '' || undefined) {
                                 titleLink.classList.add('hoverable')
                                 titleLink.innerHTML = data['siteContent'][0]['prepare']['title'] + ' | Contact';
                             } else {
-                                logo.src = data['siteContent'][0]['header']['logo']['src2'];
+                                logo.src = data['siteContent'][0]['header']['logo']['src1'];
                             }
                         }
                     }
