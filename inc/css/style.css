@@ -10,6 +10,14 @@ html{scroll-behavior:smooth;overflow-x:hidden;}
 }
 
 /* General */
+.hoverable:hover{
+    border-bottom: var(--primary-text-color) 3px dashed !important;
+    transition: .2s;
+}
+.active{
+    border-bottom: var(--primary-text-color) 3px solid;
+    transition: .2s;
+}
 .anchor{
     position: relative;
     visibility: hidden;
@@ -67,10 +75,6 @@ header{
     margin-left: .3em;
     margin-right: .3em;
 }
-.hoverable:hover{
-    border-bottom: var(--primary-text-color) 3px dashed;
-    transition: .1s;
-}
 .navWrapper a{
     text-decoration: none;
     color: var(--primary-text-color);
@@ -78,6 +82,20 @@ header{
 
 
 /* Main */
+
+/* .transition-left{
+    
+    animation-name: transition-left;
+    animation-duration:  2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+@keyframes transition-left{
+    0%{left: 0;}
+    100%{left: -100;}
+} */
+
+
 /* News */
 .newsWrapper{
     padding-top: 2em;
@@ -89,7 +107,7 @@ header{
     background-color: rgb(240, 240, 240);
     padding: 2em 1em 2em 2em;
     margin: 5em auto 5em auto;
-    border-left: red solid .6em;
+    border-left: rgb(16, 156, 46) solid .6em;
     border-top-left-radius: 1em;
     border-bottom-left-radius: 1em;
 }
@@ -120,17 +138,14 @@ header{
     color: black;
     font-size: 2em;
     margin: 0 auto 0 auto;
-    border-bottom: black 3px dashed;
+    border-bottom: black 3px solid;
     cursor: pointer;
 }
 .newsLink:hover{
-    border-bottom: black 3px solid;
+    border-bottom: black 3px dashed;
     transition: 2s;
 }
 
-/* .newsItemsAll {
-     border-right: red solid 3px;
-} */
 
 
 
@@ -140,9 +155,9 @@ header{
 .aboutWrapper{
     background-color: rgb(0, 0, 0);
 }
-.contactWrapper{
+/* .contactWrapper{
     background-color: rgb(43, 43, 43);
-}
+} */
 /* Footer */
 
 

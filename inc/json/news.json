@@ -3,6 +3,12 @@
         {
             "profilePfp": "/assets/news/jerholt_pfp.png",
             "writer": "JErholt",
+            "time": "12-08-2021 | 13:33",
+            "message": "Jeg har fået forbedret min navigations system,, nu skal jeg til at rette min news navigations!"
+        },
+        {
+            "profilePfp": "/assets/news/jerholt_pfp.png",
+            "writer": "JErholt",
             "time": "12-08-2021 | 08:29",
             "message": "tester delays"
         },
